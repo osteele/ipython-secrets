@@ -1,17 +1,17 @@
 Jupyter Secrets
-================
+===============
 
 |PyPI version| |Doc Status| |License| |Supported Python|
 
 **Jupyter Secrets** provides functions for using secrets in a Jupyter notebook.
 
-The first time :func:`get_secret` is called, it prompts the user for the value.
+The first time `get_secret` is called, it prompts the user for the value.
 After this value is read, it is saved in keypass, and the Jupyter output cell is
 cleared.
 
 |gif1|
 
-Subsequent calls to :func:`get_secret`, use the saved value. This is true even
+Subsequent calls to `get_secret`, use the saved value. This is true even
 if they are called in a different process running in the same account -- for
 example, if the machine has been rebooted, or the local Jupyter server has
 otherwise been shut down and restarted.
