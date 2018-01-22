@@ -56,6 +56,7 @@ Install dev tools:
 
 .. code:: bash
 
+    $ pip install flit
     $ pip install -r requirements.txt
 
 Install locally:
