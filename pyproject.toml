@@ -1,0 +1,26 @@
+[build-system]
+requires = ["flit"]
+build-backend = "flit.buildapi"
+
+[tool.flit.metadata]
+module = "jupyter_secrets"
+author = "Oliver Steele"
+author-email = "steele@osteele.com"
+home-page = "https://github.com/osteele/jupyter_secrets"
+classifiers = [
+    "Framework :: IPython",
+    "Framework :: Jupyter",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3.6",
+    "Programming Language :: Python",
+]
+requires = ["keyring" , "ipython"]
+requires-python = ">=3.5"
+dev-requires = [
+    "bumpversion",
+    "Sphinx",
+    "sphinx_rtd_theme",
+]
+description-file = "./README.rst"
