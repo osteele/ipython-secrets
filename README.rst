@@ -3,11 +3,11 @@ Jupyter Secrets
 
 |PyPI version| |Doc Status| |License| |Supported Python|
 
-**Jupyter Secrets** provides functions for using secrets in a Jupyter notebook.
+**Jupyter Secrets** makes it easier to use secrets in a Jupyter notebook.
 
-The first time `get_secret` is called, it prompts the user for the value.
-After this value is read, it is saved in keypass, and the Jupyter output cell is
-cleared.
+The first time `get_secret` is called, it prompts the user for the password or
+other secret. After this value is read, it is saved in the system keyring, and
+the Jupyter output cell is then cleared.
 
 |gif1|
 
@@ -64,6 +64,11 @@ Install locally:
 
     flit install --symlink
 
+Acknowledgements
+----------------
+
+This package is a thin wrapper around Keyring_.
+
 License
 -------
 
@@ -89,5 +94,6 @@ MIT
 
 .. _Colaboratory: https://colab.research.google.com/
 .. _Hydrogen: https://nteract.io/atom
+.. _Keyring: https://pypi.python.org/pypi/keyring
 .. _Nteract: https://nteract.io
 .. _server-side services: https://12factor.net/
