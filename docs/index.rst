@@ -8,5 +8,5 @@
 API
 ---
 
-.. automodule:: jupyter_secrets
+.. automodule:: ipython_secrets
     :members:

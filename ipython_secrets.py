@@ -53,7 +53,7 @@ def get_secret(service_name, username=None, *,
     --------
     ::
 
-        from jupyter_secrets import *
+        from ipython_secrets import *
 
         TWILIO_API_KEY = get_secret('TWILIO_API_KEY')
         TWILIO_API_KEY = get_secret('TWILIO_API_KEY', 'my-account')

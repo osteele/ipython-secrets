@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 #
-# jupyter_secrets documentation build configuration file, created by
+# ipython_secrets documentation build configuration file, created by
 # sphinx-quickstart on Mon Jan 22 08:06:00 2018.
 #
 # This file is execfile()d with the current directory set to its
@@ -54,7 +54,7 @@ source_suffix = '.rst'
 master_doc = 'index'
 
 # General information about the project.
-project = 'jupyter_secrets'
+project = 'ipython_secrets'
 copyright = '2018, Oliver Steele'
 author = 'Oliver Steele'
 
@@ -108,7 +108,7 @@ html_static_path = ['_static']
 # -- Options for HTMLHelp output ------------------------------------------
 
 # Output file base name for HTML help builder.
-htmlhelp_basename = 'jupyter_secretsdoc'
+htmlhelp_basename = 'ipython_secretsdoc'
 
 
 # -- Options for LaTeX output ---------------------------------------------
@@ -135,7 +135,7 @@ latex_elements = {
 # (source start file, target name, title,
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
-    (master_doc, 'jupyter_secrets.tex', 'jupyter_secrets Documentation',
+    (master_doc, 'ipython_secrets.tex', 'ipython_secrets Documentation',
      'Oliver Steele', 'manual'),
 ]
 
@@ -145,7 +145,7 @@ latex_documents = [
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
 man_pages = [
-    (master_doc, 'jupyter_secrets', 'jupyter_secrets Documentation',
+    (master_doc, 'ipython_secrets', 'ipython_secrets Documentation',
      [author], 1)
 ]
 
@@ -156,7 +156,7 @@ man_pages = [
 # (source start file, target name, title, author,
 #  dir menu entry, description, category)
 texinfo_documents = [
-    (master_doc, 'jupyter_secrets', 'jupyter_secrets Documentation',
-     author, 'jupyter_secrets', 'One line description of project.',
+    (master_doc, 'ipython_secrets', 'ipython_secrets Documentation',
+     author, 'ipython_secrets', 'One line description of project.',
      'Miscellaneous'),
 ]

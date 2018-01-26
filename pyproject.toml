@@ -3,10 +3,11 @@ requires = ["flit"]
 build-backend = "flit.buildapi"
 
 [tool.flit.metadata]
-module = "jupyter_secrets"
+dist-name = "ipython-secrets"
+module = "ipython_secrets"
 author = "Oliver Steele"
 author-email = "steele@osteele.com"
-home-page = "https://github.com/osteele/jupyter_secrets"
+home-page = "https://github.com/osteele/ipython-secrets"
 classifiers = [
     "Framework :: IPython",
     "Framework :: Jupyter",

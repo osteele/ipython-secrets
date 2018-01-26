@@ -1,9 +1,9 @@
-Jupyter Secrets
+IPython Secrets
 ===============
 
 |PyPI version| |Doc Status| |License| |Supported Python|
 
-**Jupyter Secrets** makes it easier to use secrets in a Jupyter notebook.
+**IPython Secrets** makes it easier to use secrets in a Jupyter notebook.
 
 The first time `get_secret` is called, it prompts the user for the password or
 other secret. After this value is read, it is saved in the system keyring, and
@@ -36,7 +36,7 @@ Usage
 
 .. code:: python
 
-        from jupyter_secrets import *
+        from ipython_secrets import *
 
         TWILIO_API_KEY = get_secret('TWILIO_API_KEY')
 
@@ -74,20 +74,20 @@ License
 
 MIT
 
-.. |PyPI version| image:: https://img.shields.io/pypi/v/jupyter_secrets.svg
-    :target: https://pypi.python.org/pypi/jupyter_secrets
+.. |PyPI version| image:: https://img.shields.io/pypi/v/ipython-secrets.svg
+    :target: https://pypi.python.org/pypi/ipython-secrets
     :alt: Latest PyPI Version
-.. |Doc Status| image:: https://readthedocs.org/projects/jupyter_secrets/badge/?version=latest
-    :target: http://jupyter_secrets.readthedocs.io/en/latest/?badge=latest
+.. |Doc Status| image:: https://readthedocs.org/projects/ipython-secrets/badge/?version=latest
+    :target: http://ipython-secrets.readthedocs.io/en/latest/?badge=latest
     :alt: Documentation Status
-.. |License| image:: https://img.shields.io/pypi/l/jupyter_secrets.svg
-    :target: https://pypi.python.org/pypi/jupyter_secrets
+.. |License| image:: https://img.shields.io/pypi/l/ipython-secrets.svg
+    :target: https://pypi.python.org/pypi/ipython-secrets
     :alt: License
-.. |Supported Python| image:: https://img.shields.io/pypi/pyversions/jupyter_secrets.svg
-    :target: https://pypi.python.org/pypi/jupyter_secrets
+.. |Supported Python| image:: https://img.shields.io/pypi/pyversions/ipython-secrets.svg
+    :target: https://pypi.python.org/pypi/ipython-secrets
     :alt: Supported Python Versions
 
-.. _API documentation: http://jupyter_secrets.readthedocs.io/en/latest/?badge=latest#module-jupyter_secrets
+.. _API documentation: http://ipython-secrets.readthedocs.io/en/latest/?badge=latest#module-ipython_secrets
 
 .. |gif1| image:: ./docs/images/first-time.gif
 .. |gif2| image:: ./docs/images/next-time.gif

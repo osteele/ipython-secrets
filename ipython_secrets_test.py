@@ -1,7 +1,7 @@
-from jupyter_secrets import *
+from ipython_secrets import *
 import os
 
-os.environ['USER'] = 'JUPYTER_SECRETS_PYTEST_USER'
+os.environ['USER'] = 'ipython_secrets_PYTEST_USER'
 
 # This doesn't do much more than test if the import succeeds.
 

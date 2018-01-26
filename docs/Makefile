@@ -4,7 +4,7 @@
 # You can set these variables from the command line.
 SPHINXOPTS    =
 SPHINXBUILD   = sphinx-build
-SPHINXPROJ    = jupyter_secrets
+SPHINXPROJ    = ipython_secrets
 SOURCEDIR     = .
 BUILDDIR      = _build
 
