@@ -31,6 +31,13 @@ otherwise been shut down and restarted.
     that displays the secret in a notebook output cell -- in which case it has
     been disclosed to whoever can see the notebook.
 
+Install
+-------
+
+.. code:: bash
+
+        pip3 install ipython-secrets
+
 Usage
 -----
 
