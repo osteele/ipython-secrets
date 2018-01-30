@@ -6,7 +6,7 @@ build-backend = "flit.buildapi"
 module = "jupyter_secrets"
 author = "Oliver Steele"
 author-email = "steele@osteele.com"
-home-page = "https://github.com/osteele/jupyter_secrets"
+home-page = "https://github.com/osteele/ipython-secrets"
 classifiers = [
     "Framework :: IPython",
     "Framework :: Jupyter",
@@ -16,8 +16,8 @@ classifiers = [
     "Programming Language :: Python :: 3.6",
     "Programming Language :: Python",
 ]
-requires = ["keyring" , "ipython"]
 requires-python = ">=3.5"
+requires = ["ipython-secrets"]
 dev-requires = [
     "bumpversion",
     "Sphinx",

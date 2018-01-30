@@ -31,15 +31,7 @@ sys.path.insert(0, os.path.abspath('..'))
 # Add any Sphinx extension module names here, as strings. They can be
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
-extensions = ['sphinx.ext.autodoc',
-              'sphinx.ext.napoleon',
-              'sphinx.ext.viewcode',
-              'sphinx.ext.intersphinx']
-
-intersphinx_mapping = {
-    'python': ('https://docs.python.org/3.6', None),
-    'keyring': ('http://keyring.readthedocs.io/en/latest', None),
-}
+extensions = []
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
@@ -63,7 +55,7 @@ author = 'Oliver Steele'
 # built documents.
 #
 # The short X.Y version.
-version = '0.1.1'
+version = '0.2.0'
 # The full version, including alpha/beta/rc tags.
 release = version
 
