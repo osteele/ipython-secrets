@@ -1,5 +1,5 @@
-Jupyter Secrets ⟶ Jupyter Secrets
-=================================
+Jupyter Secrets ⟶ Ipython Secrets
+===================================
 
 This project has been renamed to ipython-secrets_.
 
