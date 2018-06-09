@@ -22,9 +22,11 @@ try:
 except ImportError:
     def clear_output(): pass
 
+DEFAULT = object()
 
-def get_secret(service_name, username=None, *,
-               default=None, force_prompt=False, prompt=None):
+
+def get_secret(service_name, *, username=None,
+               default=DEFAULT, force_prompt=False, prompt=None):
     """Read a secret from the keyring or the user.
 
     Look for a secret in the keyring. If it's not present, prompt the user,
@@ -41,7 +43,7 @@ def get_secret(service_name, username=None, *,
 
     default : str, optional
         The default value, if the secret is not present in the keyring. If this
-        is non-None, the user is never prompted.
+        is supplied, the user is never prompted.
 
     force_prompt : str, optional
         If true, the user is always prompted for a secret.
@@ -57,19 +59,22 @@ def get_secret(service_name, username=None, *,
 
         TWILIO_API_KEY = get_secret('TWILIO_API_KEY')
         TWILIO_API_KEY = get_secret('TWILIO_API_KEY', 'my-account')
-        TWILIO_API_KEY = get_secret('TWILIO_API_KEY', 'my-account', prompt="Enter the API key")
+        TWILIO_API_KEY = get_secret('TWILIO_API_KEY', 'my-account',
+                                    prompt="Enter the API key")
     """
     if username is None:
         username = os.environ.get('USER')
-    password = None if force_prompt else keyring.get_password(service_name, username)
-    if password is None:
-        password = default
-    if password is None:
-        # uses ternary instead of `prompt or …`, in order to support prompt == ''
-        prompt = '{}[{}]'.format(service_name, username) if prompt is None else prompt
-        password = input(prompt)
-        keyring.set_password(service_name, username, password)
-        clear_output()
+    password = None
+    if not force_prompt:
+        password = keyring.get_password(service_name, username)
+    if password is not None:
+        return password
+    if default is not DEFAULT:
+        return default
+    prompt = '{}[{}]'.format(service_name, username) if prompt is None else prompt
+    password = input(prompt)
+    keyring.set_password(service_name, username, password)
+    clear_output()
     return password
 
 

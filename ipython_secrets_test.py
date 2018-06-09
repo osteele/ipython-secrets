@@ -1,19 +1,22 @@
 import os
-
-import ipython_secrets
-import pytest
+from itertools import product
 from unittest.mock import patch
-from keyring.errors import PasswordDeleteError
+
+import pytest
 from ipython_secrets import delete_secret, get_secret, set_secret
+from keyring.errors import PasswordDeleteError
 
 os.environ['USER'] = 'ipython_secrets_PYTEST_USER'
 
 
 @pytest.fixture
 def keychain():
-    for k in ['KEY', 'K1', 'K2']:
+    # TODO: use a mock keyring backend, instead of mutating the real one
+    users = [None, 'u1', 'u2']
+    keys = ['KEY', 'K', 'K1', 'K2']
+    for user, key in product(users, keys):
         try:
-            delete_secret(k)
+            delete_secret(key, username=user)
         except PasswordDeleteError:
             pass
 
@@ -30,8 +33,11 @@ def test_get_secret(keychain, input):
 
 def test_get_secret_defaults(keychain):
     assert get_secret('KEY', default='default') == 'default'
+    assert get_secret('KEY', default=None) is None
+
     set_secret('KEY', 'S1')
     assert get_secret('KEY', default='default') == 'S1'
+    assert get_secret('KEY', default=None) == 'S1'
 
 
 def test_set_secret(keychain):
@@ -45,6 +51,12 @@ def test_set_secret(keychain):
     set_secret('K1', 'S3')
     assert get_secret('K1') == 'S3'
     assert get_secret('K2') == 'S2'
+
+    set_secret('K1', 'S4', username='u1')
+    set_secret('K1', 'S5', username='u2')
+    assert get_secret('K1') == 'S3'
+    assert get_secret('K1', username='u1') == 'S4'
+    assert get_secret('K1', username='u2') == 'S5'
 
 
 def test_delete_secret(keychain):
