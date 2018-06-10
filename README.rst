@@ -11,15 +11,19 @@ the Jupyter output cell is then cleared.
 
 |gif1|
 
-Subsequent calls to `get_secret`, use the saved value. This is true even
+Subsequent calls to ``get_secret`` use the saved value. This is true even
 if they are called in a different process running in the same account -- for
 example, if the machine has been rebooted, or the local Jupyter server has
 otherwise been shut down and restarted.
 
 |gif2|
 
-.. note:: This package won't work on Colaboratory_ (Colaboratory doesn't run
-    `keyring`). It probably won't work on some other hosted notebook environments.
+.. note:: Install the `gsheet-keyring package`_ to use ipython-secrets on
+    `Google Colaboratory`_: ``pip3 install gsheet-keyring``. The gsheet-keyring
+    package provides a Keyring backend that is backed by Google Sheets. This is
+    necessary since the Colaboratory environment doesn't provide a persistent
+    file system, or the OS services that the Keyring's standard and alternative
+    backends rely on.
 
 .. warning:: This package stores the secret on the Jupyter server. Don't trust
     it with secrets you don't trust the Jupyter server with. (This is true for
@@ -59,11 +63,14 @@ it complicates the setup instructions for notebook users.
 Development
 -----------
 
-Install dev tools:
+Install Pipenv, and required packages:
 
 .. code:: bash
 
-    $ pip install -r requirements-dev.txt
+    $ pip3 install pipenv
+    $ pipenv install
+    $ pipenv shell
+    $ pip install flit
 
 Install locally:
 
@@ -99,8 +106,9 @@ MIT
 .. |gif1| image:: ./docs/images/first-time.gif
 .. |gif2| image:: ./docs/images/next-time.gif
 
-.. _Colaboratory: https://colab.research.google.com/
+.. _Google Colaboratory: https://colab.research.google.com/
 .. _Hydrogen: https://nteract.io/atom
 .. _Keyring: https://pypi.python.org/pypi/keyring
 .. _Nteract: https://nteract.io
 .. _server-side services: https://12factor.net/
+.. _gsheet-keyring package: https://pypi.org/project/gsheet-keyring/
