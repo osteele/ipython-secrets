@@ -75,15 +75,17 @@ def _iter_usernames():
 
 def get_username():
     """Returns the first username from the ``USER`` environment variable , the
-    current keyring backend, and (if :mod:`oauth2client` is installed) the
-    current environnment's `Application Default Credentials`_.
+    current keyring backend's OAuth2 ``credentials``, and (if
+    :mod:`oauth2client` is installed) the current environnment's `Application
+    Default Credentials`_.
 
-    .. _Application Default Credentials: https://cloud.google.com/docs/authentication/production
+    .. _Application Default Credentials:
+    https://cloud.google.com/docs/authentication/production
     """
-    return next(filter(_iter_usernames()), 'ipython-secrets')
+    return next(filter(None, _iter_usernames()), 'ipython-secrets')
 
 
-def get_secret(service_name, *, username=None,
+def get_secret(servicename, *, username=None,
                default=DEFAULT, force_prompt=False, prompt=None):
     """Reads a stored secret, or prompt the user for its value.
 
@@ -92,7 +94,7 @@ def get_secret(service_name, *, username=None,
 
     Parameters
     ----------
-    service_name: str
+    servicename: str
         A keyring service name.
 
     username: str, optional
@@ -124,24 +126,24 @@ def get_secret(service_name, *, username=None,
         username = get_username()
     password = None
     if not force_prompt:
-        password = keyring.get_password(service_name, username)
+        password = keyring.get_password(servicename, username)
     if password is not None:
         return password
     if default is not DEFAULT:
         return default
-    prompt = '{}[{}]'.format(service_name, username) if prompt is None else prompt
+    prompt = '{}[{}]'.format(servicename, username) if prompt is None else prompt
     password = input(prompt)
-    keyring.set_password(service_name, username, password)
+    keyring.set_password(servicename, username, password)
     clear_output()
     return password
 
 
-def set_secret(service_name, password, *, username=None):
+def set_secret(servicename, password, *, username=None):
     """Sets a secret value.
 
     Parameters
     ----------
-    service_name: str
+    servicename: str
         A keyring service name.
 
     password: str
@@ -159,19 +161,19 @@ def set_secret(service_name, password, *, username=None):
     compatibility with the more-frequently-used functions in this package.
 
     """
-    keyring.set_password(service_name, username or get_username(), password)
+    keyring.set_password(servicename, username or get_username(), password)
 
 
-def delete_secret(service_name, username=None):
+def delete_secret(servicename, username=None):
     """Deletes a secret from the keyring.
 
     Parameters
     ----------
-    service_name: str
+    servicename: str
         A keyring service name.
 
     username: str, optional
         A keyring username. This defaults to the value of the USER environment
         variable.
     """
-    keyring.delete_password(service_name, username or get_username)
+    keyring.delete_password(servicename, username or get_username())
