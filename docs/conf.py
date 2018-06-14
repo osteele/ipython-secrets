@@ -63,7 +63,7 @@ author = 'Oliver Steele'
 # built documents.
 #
 # The short X.Y version.
-version = '1.1.0'
+version = '1.1.1'
 # The full version, including alpha/beta/rc tags.
 release = version
 
