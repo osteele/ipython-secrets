@@ -20,7 +20,8 @@ import keyring
 try:
     from IPython.display import clear_output
 except ImportError:
-    def clear_output(): pass
+    def clear_output():
+        pass
 
 __all__ = ["get_secret", "set_secret", "delete_secret"]
 
@@ -28,7 +29,9 @@ DEFAULT = object()
 
 
 def _iter_usernames():
-    """Try a few heuristics for determining the username:
+    """Yield username candidates.
+
+    Try a few heuristics for determining the username:
 
     1. The value of the USER environment variable.
     2. If the keyring backend has a `credentials` property
@@ -64,7 +67,8 @@ def _iter_usernames():
             pass
 
         try:
-            from oauth2client.client import ApplicationDefaultCredentialsError, GoogleCredentials
+            from oauth2client.client import (ApplicationDefaultCredentialsError,
+                                             GoogleCredentials)
             yield GoogleCredentials.get_application_default()
         except (ApplicationDefaultCredentialsError, ImportError):
             pass
@@ -74,7 +78,9 @@ def _iter_usernames():
 
 
 def get_username():
-    """Returns the first username from the ``USER`` environment variable , the
+    """Return a default username, using a few heuristics.
+
+    Returns the first username from the ``USER`` environment variable , the
     current keyring backend's OAuth2 ``credentials``, and (if
     :mod:`oauth2client` is installed) the current environnment's `Application
     Default Credentials`_.
@@ -87,7 +93,7 @@ def get_username():
 
 def get_secret(servicename, *, username=None,
                default=DEFAULT, force_prompt=False, prompt=None):
-    """Reads a stored secret, or prompt the user for its value.
+    """Read a stored secret, or prompt the user for its value.
 
     Look for a secret in the keyring. If it's not present, prompt the user,
     clear the cell, and save the secret.
@@ -139,7 +145,7 @@ def get_secret(servicename, *, username=None,
 
 
 def set_secret(servicename, password, *, username=None):
-    """Sets a secret value.
+    """Set a secret value.
 
     Parameters
     ----------
@@ -165,7 +171,7 @@ def set_secret(servicename, password, *, username=None):
 
 
 def delete_secret(servicename, username=None):
-    """Deletes a secret from the keyring.
+    """Delete a secret from the keyring.
 
     Parameters
     ----------
